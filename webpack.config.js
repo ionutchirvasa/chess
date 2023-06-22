@@ -60,6 +60,7 @@ module.exports = () => {
     config.plugins.push(new WorkboxWebpackPlugin.GenerateSW());
   } else {
     config.mode = "development";
+    config.devtool = "eval-source-map";
   }
   return config;
 };
