@@ -1,7 +1,4 @@
-@import url("./core/web-components/board.css");
-@import url("./core/web-components/square.css");
-@import url("./core/web-components/piece.css");
-@import url("./core/web-components/move-list.css");
+@import url("./core/web-components/index.css");
 
 :root {
   --board-size: 640px;

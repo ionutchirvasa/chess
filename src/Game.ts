@@ -1,9 +1,6 @@
 import config from "./config.json";
-import { Board } from "./core/web-components/Board";
-import { MoveList } from "./core/web-components/MoveList";
-import { Piece } from "./core/web-components/Piece";
-import { Square } from "./core/web-components/Square";
-
+import { Turn } from "./core/Turn";
+import { Board, MoveList, Piece, Square } from "./core/web-components";
 export class Game {
   public board: Board;
 
@@ -11,11 +8,7 @@ export class Game {
 
   public history: MoveList;
 
-  private turn: {
-    piece: Piece;
-    player: "dark" | "light";
-    possibleMoves: Square[];
-  };
+  private turn: Turn;
 
   public constructor() {
     this.board = new Board();
@@ -24,11 +17,7 @@ export class Game {
     document.body.append(this.board);
     document.body.append(this.history);
 
-    this.turn = {
-      piece: null,
-      player: "light",
-      possibleMoves: [],
-    };
+    this.turn = new Turn();
 
     this.board
       .querySelectorAll("chess-board-square")
@@ -45,7 +34,7 @@ export class Game {
     });
 
     this.board.querySelectorAll("chess-piece").forEach((piece) => {
-      piece.addEventListener("dragstart", this.dragStart);
+      piece.addEventListener("dragstart", this.onDragStart);
       piece.addEventListener("pointerdown", this.onPointerDown);
     });
   }
@@ -56,32 +45,33 @@ export class Game {
     target.piece = piece;
   }
 
-  public dragStart = (event: DragEvent) => {
+  private onDragStart = (event: DragEvent) => {
     event.dataTransfer.effectAllowed = "move";
-    this.turn.piece = event.currentTarget as Piece;
+
+    this.turn.current = event.currentTarget as Piece;
   };
 
-  public onPointerDown = (event: PointerEvent) => {
-    this.turn.possibleMoves = this.board.getValidMoves(
-      event.currentTarget as Piece
-    );
-  };
+  private onPointerDown = (event: PointerEvent) => {
+    const piece = event.currentTarget as Piece;
 
-  public onDrop = (event: DragEvent) => {
-    console.log("HIDE POSSIBLE MOVES", event.currentTarget);
-    this.board.clean();
-
-    const target = event.currentTarget as Square;
-    console.log("TO", target);
-
-    if (this.turn.possibleMoves.includes(target)) {
-      target.piece = this.turn.piece;
-      this.turn.piece.touched = true;
-      this.history.add(target);
+    if (this.turn.isMyTurn(piece)) {
+      this.turn.possibleMoves = this.board.getValidMoves(
+        event.currentTarget as Piece
+      );
+    } else {
+      this.board.clean();
     }
   };
 
-  public changePlayer() {
-    this.turn.player = this.turn.player === "dark" ? "light" : "dark";
-  }
+  private onDrop = (event: DragEvent) => {
+    this.board.clean();
+
+    const target = event.currentTarget as Square;
+
+    if (this.turn.possibleMoves.includes(target)) {
+      target.piece = this.turn.current;
+      this.history.add(target);
+      this.turn.next();
+    }
+  };
 }

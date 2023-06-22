@@ -15,3 +15,17 @@ move-list .move::before {
   content: counter(list-number) ". ";
   padding-right: 1em;
 }
+
+move-list-entry{
+  display: flex;
+  align-items: center;
+}
+
+move-list-entry .piece{
+  width: 1rem;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.7));
+}
+
+move-list-entry:first-child .piece{
+  fill: var(--piece-light);
+}

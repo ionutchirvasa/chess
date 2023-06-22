@@ -1,9 +1,10 @@
-import { Piece } from "./Piece";
-import { Square } from "./Square";
-import { Component, Move, Position } from "./contracts";
-import { define } from "./decorators";
 
-import config from "./../../config.json";
+
+import { Component, Move, Position } from "../contracts";
+import { define } from "../decorators";
+import { Piece } from "../piece";
+import { Square } from "../square";
+import config from "./../../../config.json";
 
 const size = 8;
 

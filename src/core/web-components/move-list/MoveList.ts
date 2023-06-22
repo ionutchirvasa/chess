@@ -1,13 +1,12 @@
-import { Square } from "./Square";
-import { Component, Turn } from "./contracts";
-import { define } from "./decorators";
-
-import config from "./../../config.json";
+import { Component, MoveLog } from "../contracts";
+import { define } from "../decorators";
+import { Square } from "../square";
+import { MoveListEntry } from "./MoveListEntry";
 
 @define("move-list")
 export class MoveList extends Component {
-  private light: Turn[] = [];
-  private dark: Turn[] = [];
+  private light: MoveLog[] = [];
+  private dark: MoveLog[] = [];
 
   public render(): string | HTMLElement {
     return "";
@@ -21,17 +20,15 @@ export class MoveList extends Component {
       square: square,
     };
 
-    const element = document.createElement("div");
-    element.setAttribute("player", entry.piece.player);
-    element.textContent = `${config.pieces.find(piece => piece.type === entry.piece.type)?.name}${config.labels.files[row]}${config.labels.ranks[column]}`;
-
+    const move = new MoveListEntry(square);
+    
     if (entry.piece.player === "light") {
       const row = document.createElement("div");
       row.classList.add("move");
       this.root.append(row);
     }
 
-    this.root.lastChild.appendChild(element);
+    this.root.lastChild.appendChild(move);
 
     switch (entry.piece.player) {
       case "light":

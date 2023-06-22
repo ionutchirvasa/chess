@@ -1,6 +1,6 @@
-import { Piece } from "./Piece";
-import { Component, Position } from "./contracts";
-import { attribute, define } from "./decorators";
+import { Component, Position } from "../contracts";
+import { attribute, define } from "../decorators";
+import { Piece } from "../piece";
 
 @define("chess-board-square")
 export class Square extends Component {

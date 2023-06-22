@@ -1,5 +1,5 @@
-import { Piece } from "../Piece";
-import { Square } from "../Square";
+import { Piece } from "../piece";
+import { Square } from "../square";
 
 export * from "./Component";
 export * from "./CustomElement";
@@ -14,12 +14,7 @@ export interface Move extends Position {
   scope?: string;
 }
 
-export type Turn = {
+export type MoveLog = {
   piece: Piece;
   square: Square;
-};
-
-export type HistoryEntry = {
-  light: Turn;
-  dark: Turn;
 };

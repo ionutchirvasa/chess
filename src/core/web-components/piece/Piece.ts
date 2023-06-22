@@ -1,8 +1,7 @@
-import { Component } from "./contracts";
-import { attribute, define } from "./decorators";
-
-import icons from "./../../icons.json";
-import { Square } from "./Square";
+import { Component } from "../contracts";
+import { attribute, define } from "../decorators";
+import { Square } from "../square";
+import icons from "./../../../icons.json";
 
 @define("chess-piece")
 export class Piece extends Component {
@@ -47,6 +46,10 @@ export class Piece extends Component {
 
   get type(): string {
     return this.getAttribute("type");
+  }
+
+  get icon(): SVGElement {
+    return this.firstChild.cloneNode(true) as SVGElement;
   }
 
   public get parentElement(): Square {
