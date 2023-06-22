@@ -1,0 +1,6 @@
+chess-board{
+    display: flex;
+    width: var(--board-size);
+    height: var(--board-size);
+    flex-wrap: wrap;
+}

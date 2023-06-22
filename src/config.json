@@ -1,0 +1,97 @@
+{
+  "labels": {
+    "files": [1, 2, 3, 4, 5, 6, 7, 8],
+    "ranks": ["a", "b", "v", "d", "e", "f", "g", "h"]
+  },
+  "pieces": [
+    {
+      "type": "pawn",
+      "name": "",
+      "moves": [
+        { "row": 1, "column": 0 },
+        { "row": 1, "column": 1, "scope": "attack" },
+        { "row": 1, "column": -1, "scope": "attack" }
+      ]
+    },
+    {
+      "type": "bishop",
+      "name": "Bishop",
+      "moves": [
+        { "row": 1, "column": 1, "scope": "diagonal" },
+        { "row": -1, "column": 1, "scope": "diagonal" },
+        { "row": 1, "column": -1, "scope": "diagonal" },
+        { "row": -1, "column": -1, "scope": "diagonal" }
+      ]
+    },
+    {
+      "type": "knight",
+      "name": "Knight",
+      "moves": [
+        { "row": 2, "column": 1 },
+        { "row": 2, "column": -1 },
+        { "row": -2, "column": 1 },
+        { "row": -2, "column": -1 },
+        { "row": 1, "column": 2 },
+        { "row": 1, "column": -2 },
+        { "row": -1, "column": 2 },
+        { "row": -1, "column": -2 }
+      ]
+    },
+    {
+      "type": "rook",
+      "name": "Rook",
+      "moves": [
+        { "row": 0, "column": 1, "scope": "straight" },
+        { "row": 0, "column": -1, "scope": "straight" },
+        { "row": 1, "column": 0, "scope": "straight" },
+        { "row": -1, "column": 0, "scope": "straight" }
+      ]
+    },
+    {
+      "type": "queen",
+      "name": "Queen",
+      "moves": [
+        { "row": 0, "column": 1, "scope": "straight" },
+        { "row": 0, "column": -1, "scope": "straight" },
+        { "row": 1, "column": 0, "scope": "straight" },
+        { "row": -1, "column": 0, "scope": "straight" },
+        { "row": 1, "column": 1, "scope": "diagonal" },
+        { "row": -1, "column": 1, "scope": "diagonal" },
+        { "row": 1, "column": -1, "scope": "diagonal" },
+        { "row": -1, "column": -1, "scope": "diagonal" }
+      ]
+    },
+    {
+      "type": "king",
+      "name": "King",
+      "moves": [
+        { "row": 0, "column": 1 },
+        { "row": 0, "column": -1 },
+        { "row": 1, "column": 0 },
+        { "row": -1, "column": 0 },
+        { "row": 1, "column": 1 },
+        { "row": -1, "column": 1 },
+        { "row": 1, "column": -1 },
+        { "row": -1, "column": -1 }
+      ]
+    }
+  ],
+  "initial": [
+    "rook",
+    "knight",
+    "bishop",
+    "king",
+    "queen",
+    "bishop",
+    "knight",
+    "rook",
+    "pawn",
+    "pawn",
+    "pawn",
+    "pawn",
+    "pawn",
+    "pawn",
+    "pawn",
+    "pawn"
+  ]
+}

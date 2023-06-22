@@ -1,0 +1,46 @@
+chess-board-square {
+  box-sizing: border-box;
+  width: var(--square-size);
+  height: var(--square-size);
+  padding: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+chess-board-square.next::before,
+chess-board-square.attack::before{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+chess-board-square.next::before {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 30%;
+  height: 30%;
+}
+
+chess-board-square.attack::before {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    width: 70%;
+    height: 70%;
+  }
+/*
+chess-board-square::after{
+    content: " ";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}*/
+
+chess-board-square.dark {
+  background-color: var(--square-dark);
+}
+
+chess-board-square.light {
+  background-color: var(--square-light);
+}

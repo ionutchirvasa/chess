@@ -1,0 +1,19 @@
+@import url("./core/web-components/board.css");
+@import url("./core/web-components/square.css");
+@import url("./core/web-components/piece.css");
+@import url("./core/web-components/move-list.css");
+
+:root {
+  --board-size: 640px;
+  --square-size: calc(var(--board-size) / 8);
+
+  --suqre-light: #eeeed2;
+  --square-dark: #769656;
+
+  --piece-light:#f8f8f8;
+  --piece-dark: #565352;
+}
+
+body{
+  font-family: sans-serif;
+}

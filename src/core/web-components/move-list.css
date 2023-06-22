@@ -1,0 +1,17 @@
+move-list {
+  counter-reset: list-number;
+}
+
+move-list .move {
+  display: flex;
+}
+
+move-list .move > * {
+  padding-right: 1em;
+}
+
+move-list .move::before {
+  counter-increment: list-number;
+  content: counter(list-number) ". ";
+  padding-right: 1em;
+}
